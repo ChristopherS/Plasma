@@ -118,42 +118,42 @@ ParamBlockDesc2 gCameraCmdBlock
 
     kCommand,       _T("Command"),      TYPE_INT,               0, 0,
         p_default, kCommandSetFixedCam,
-        end,
+        p_end,
         
     kOffsetX,   _T("X Offset"), TYPE_FLOAT, P_ANIMATABLE,   0,
         p_range, 0.0f, 50.0f,
         p_default, 0.0f,
         p_ui,   TYPE_SPINNER, EDITTYPE_FLOAT,
         IDC_CAMERACMD_OFFSETX, IDC_CAMERACMD_SPIN_OFFSETX, SPIN_AUTOSCALE,
-        end,
+        p_end,
 
     kOffsetY,   _T("Y Offset"), TYPE_FLOAT, P_ANIMATABLE,   0,
         p_range, 0.0f, 50.0f,
         p_default, 10.0f,
         p_ui,   TYPE_SPINNER, EDITTYPE_FLOAT,
         IDC_CAMERACMD_OFFSETY, IDC_CAMERACMD_SPIN_OFFSETY, SPIN_AUTOSCALE,
-        end,
+        p_end,
 
     kOffsetZ,   _T("Z Offset"), TYPE_FLOAT, P_ANIMATABLE,   0,
         p_range, 0.0f, 50.0f,
         p_default, 3.0f,
         p_ui,   TYPE_SPINNER, EDITTYPE_FLOAT,
         IDC_CAMERACMD_OFFSETZ, IDC_CAMERACMD_SPIN_OFFSETZ, SPIN_AUTOSCALE,
-        end,
+        p_end,
 
     kCustomBoundListStuff, _T("FixedCamera"),   TYPE_INODE,     0, 0,
         p_ui,   TYPE_PICKNODEBUTTON, IDC_COMP_CAMERACMD_PICKSTATE_BASE,
         p_sclassID,  CAMERA_CLASS_ID,
         p_prompt, IDS_COMP_PHYS_CHOSEN_BASE,
-        end,
+        p_end,
 
     kSmooth,    _T("useCut"),       TYPE_BOOL,              0, 0,
         p_ui,               TYPE_SINGLECHEKBOX, IDC_COMP_CAMERACMD_CUT,
-        end,
+        p_end,
 
 
 
-    end
+    p_end
 );
 
 plCameraCmdComponent::plCameraCmdComponent()

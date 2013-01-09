@@ -132,7 +132,7 @@ class plPBBaseDec
         plCAnimPB::kRollMain, IDD_##mainResIDName, IDS_##mainResIDName, 0, 0, mainProc,                 \
         plCAnimPB::kRollEase, IDD_##easeResIDName, IDS_##easeResIDName, 0, 0, easeProc,                 \
         &plPBBaseDec::fAnimBlock,       /* ParamBlock to include */                                 \
-        end,                                                                                        \
+        p_end,                                                                                        \
     );
         
 

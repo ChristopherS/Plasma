@@ -132,8 +132,8 @@ void plAutoUIBase::AddCheckBox(int16_t id, const char *scriptName, const char *n
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_BOOL, 0, 0,
-        p_default, def, end,
-        end);
+        p_default, def, p_end,
+        p_end);
     plAutoUIParam* param = new plCheckBoxParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -146,8 +146,8 @@ void plAutoUIBase::AddFloatSpinner(int16_t id, const char *scriptName, const cha
     fDesc->AddParam(id, scriptNameNew, TYPE_FLOAT, 0, 0,
         p_default, def,
         p_range, min, max,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plSpinnerParam(id, name, true);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -160,8 +160,8 @@ void plAutoUIBase::AddIntSpinner(int16_t id, const char *scriptName, const char 
     fDesc->AddParam(id, scriptNameNew, TYPE_INT, 0, 0,
         p_default, def,
         p_range, min, max,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plSpinnerParam(id, name, false);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -172,8 +172,8 @@ void plAutoUIBase::AddEditBox(int16_t id, const char *scriptName, const char *na
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_STRING, 0, 0,
-        p_default, def ? hsStrcpy(def) : nil, end,
-        end);
+        p_default, def ? hsStrcpy(def) : nil, p_end,
+        p_end);
     plAutoUIParam* param = new plEditParam(id, name, lines);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -184,8 +184,8 @@ void plAutoUIBase::AddPickNodeList(int16_t id, const char *scriptName, const cha
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE_TAB, 0, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickListParam(id, name, filter);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -196,8 +196,8 @@ void plAutoUIBase::AddPickNodeButton(int16_t id, const char *scriptName, const c
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickButtonParam(id, name, filter, canConvertToType);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -208,8 +208,8 @@ void plAutoUIBase::AddPickComponentButton(int16_t id, const char *scriptName, co
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickComponentButtonParam(id, name, filter, canConvertToType);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -220,8 +220,8 @@ void plAutoUIBase::AddPickComponentList(int16_t id, const char *scriptName, cons
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE_TAB, 0, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickComponentListParam(id, name, filter);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -232,8 +232,8 @@ void plAutoUIBase::AddPickActivatorButton(int16_t id, const char *scriptName, co
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickActivatorButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -244,8 +244,8 @@ void plAutoUIBase::AddPickActivatorList(int16_t id, const char *scriptName, cons
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE_TAB, 0, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickActivatorListParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -256,8 +256,8 @@ void plAutoUIBase::AddPickDynamicTextButton(int16_t id, const char *scriptName, 
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_REFTARG, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickDynamicTextButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -268,8 +268,8 @@ void plAutoUIBase::AddPickGUIDialogButton(int16_t id, const char *scriptName, co
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickSingleComponentButtonParam(id, name,plAutoUIParam::kTypeGUIDialog,GUI_DIALOG_COMP_CLASS_ID);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -280,8 +280,8 @@ void plAutoUIBase::AddPickExcludeRegionButton(int16_t id, const char *scriptName
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickExcludeRegionButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -292,8 +292,8 @@ void plAutoUIBase::AddPickWaterComponentButton(int16_t id, const char *scriptNam
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickWaterComponentButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -304,8 +304,8 @@ void plAutoUIBase::AddPickSwimCurrentInterfaceButton(int16_t id, const char *scr
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickSwimCurrentInterfaceButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -316,8 +316,8 @@ void plAutoUIBase::AddPickClusterComponentButton(int16_t id, const char *scriptN
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickClusterComponentButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -328,8 +328,8 @@ void plAutoUIBase::AddPickAnimationButton(int16_t id, const char *scriptName, co
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickAnimationButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -340,8 +340,8 @@ void plAutoUIBase::AddPickBehaviorButton(int16_t id, const char *scriptName, con
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickBehaviorButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -352,8 +352,8 @@ void plAutoUIBase::AddPickMaterialButton(int16_t id, const char *scriptName, con
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_REFTARG, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickMaterialButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -364,8 +364,8 @@ void plAutoUIBase::AddPickMaterialAnimationButton(int16_t id, const char *script
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_REFTARG, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickMaterialAnimationButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -376,8 +376,8 @@ void plAutoUIBase::AddPickGUIPopUpMenuButton(int16_t id, const char *scriptName,
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickSingleComponentButtonParam(id, name,plAutoUIParam::kTypeGUIPopUpMenu,GUI_MENUANCHOR_CLASSID);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -388,8 +388,8 @@ void plAutoUIBase::AddPickGUISkinButton(int16_t id, const char *scriptName, cons
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickSingleComponentButtonParam(id, name,plAutoUIParam::kTypeGUISkin,GUI_SKIN_CLASSID);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -400,8 +400,8 @@ void plAutoUIBase::AddDropDownList(int16_t id, const char *scriptName, const cha
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_STRING, 0, 0,
-        p_default, nil, end,
-        end);
+        p_default, nil, p_end,
+        p_end);
     plAutoUIParam* param = new plDropDownListParam(id, name, options);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);
@@ -412,8 +412,8 @@ void plAutoUIBase::AddPickGrassComponentButton(int16_t id, const char *scriptNam
     char *scriptNameNew = scriptName ? hsStrcpy(scriptName) : IMakeScriptName(name);
 
     fDesc->AddParam(id, scriptNameNew, TYPE_INODE, 0, 0,
-        end,
-        end);
+        p_end,
+        p_end);
     plAutoUIParam* param = new plPickGrassComponentButtonParam(id, name);
     param->SetVisInfo(vid, vstates);
     fParams.push_back(param);

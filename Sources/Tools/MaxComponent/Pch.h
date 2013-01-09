@@ -120,4 +120,7 @@ You can contact Cyan Worlds, Inc. by email legal@cyan.com
 #   include <INamedSelectionSetManager.h>
 #endif
 
+#if MAX_VERSION_MAJOR < 15
+#   define p_end end
+#endif
 #endif // _MaxComponent_Pch_inc_

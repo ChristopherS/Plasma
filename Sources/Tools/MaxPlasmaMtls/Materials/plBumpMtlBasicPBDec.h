@@ -81,7 +81,7 @@ static ParamBlockDesc2 gBumpBasicPB
     kBumpBasLayer,          _T("bumpLayer"),    TYPE_TEXMAP,        0, IDS_BASIC_AMB,
         p_ui,               TYPE_TEXMAPBUTTON, IDC_LAYER1,
         p_subtexno, 0,
-        end,
+        p_end,
 
     kBumpBasRunColor,       _T("runtimeColor"),     TYPE_RGBA,          P_ANIMATABLE, IDS_BASIC_RUNCOLOR,
 //      p_ui,           TYPE_COLORSWATCH, IDC_LAYER_RUNCOLOR,
@@ -89,13 +89,13 @@ static ParamBlockDesc2 gBumpBasicPB
                         IDC_DUMMY_EDIT1, IDC_DUMMY_SPIN1, IDC_DUMMY_EDIT2, IDC_DUMMY_SPIN2,
                         SPIN_AUTOSCALE,
         p_default,      Color(1,0,0),
-        end,
+        p_end,
 
     // Specularity
     kBumpBasSpecular,   _T("useSpec"),      TYPE_BOOL,      0, 0,
         p_ui,           TYPE_SINGLECHEKBOX, IDC_SHADE_SPECULAR,
-        end,
+        p_end,
 
-    end
+    p_end
 );
 ParamBlockDesc2 *GetBumpBasicPB() { return &gBumpBasicPB; }

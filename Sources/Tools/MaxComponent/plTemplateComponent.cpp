@@ -92,7 +92,7 @@ ParamBlockDesc2 gTemplateBlk
 (
     plComponent::kBlkComp, _T("Template"), 0, &gTemplateDesc, P_AUTO_CONSTRUCT, plComponent::kRefComp,
 
-    end
+    p_end
 );
 
 
@@ -191,9 +191,9 @@ ParamBlockDesc2 gSpawnBlk
 
     kTemplateName,  _T("name"),     TYPE_STRING,    0, 0,
         p_ui,       TYPE_EDITBOX, IDC_NAME,
-        end,
+        p_end,
 
-    end
+    p_end
 );
 
 

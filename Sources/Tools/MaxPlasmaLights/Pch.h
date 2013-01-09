@@ -67,4 +67,8 @@ You can contact Cyan Worlds, Inc. by email legal@cyan.com
 #include "MaxMain/MaxCompat.h"
 #include "resource.h"
 
+#if MAX_VERSION_MAJOR < 15
+#   define p_end end
+#endif
+
 #endif // _MaxPlasmaLights_Pch_inc_

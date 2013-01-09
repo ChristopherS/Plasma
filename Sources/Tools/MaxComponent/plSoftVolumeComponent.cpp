@@ -372,29 +372,29 @@ ParamBlockDesc2 gSoftVolBk
         p_range, 0.0, 500.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTVOL_SOFT, IDC_COMP_SOFTVOL_SOFT_SPIN, 1.0,
-        end,
+        p_end,
 
     plSoftVolComponent::kPartialEnabled,  _T("EnablePartial"), TYPE_BOOL,       0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_SOFTVOL_ENABLEPARTIAL,
         p_enable_ctrls,     2, plSoftVolComponent::kInsidePower, plSoftVolComponent::kOutsidePower,
-        end,
+        p_end,
 
     plSoftVolComponent::kInsidePower,       _T("PowerInside"),      TYPE_FLOAT,     0, 0,   
         p_default, 100.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTVOL_INSIDE, IDC_COMP_SOFTVOL_INSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
     plSoftVolComponent::kOutsidePower,      _T("PowerOutside"),     TYPE_FLOAT,     0, 0,   
         p_default, 0.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTVOL_OUTSIDE, IDC_COMP_SOFTVOL_OUTSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
-    end
+    p_end
 
 );
 
@@ -691,29 +691,29 @@ ParamBlockDesc2 gSoftVolUnionBk
         p_ui,           TYPE_NODELISTBOX, IDC_LIST_TARGS, 0, 0, IDC_DEL_TARGS,
         p_classID,      SOFTVOLUME_BASE_CID,
         p_accessor,     &gSoftVolUnionAccessor,
-        end,
+        p_end,
 
     plSoftVolUnionComponent::kPartialEnabled,  _T("EnablePartial"), TYPE_BOOL,      0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_SOFTUNION_ENABLEPARTIAL,
         p_enable_ctrls,     2, plSoftVolUnionComponent::kInsidePower, plSoftVolUnionComponent::kOutsidePower,
-        end,
+        p_end,
 
     plSoftVolUnionComponent::kInsidePower,      _T("PowerInside"),      TYPE_FLOAT,     0, 0,   
         p_default, 100.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTUNION_INSIDE, IDC_COMP_SOFTUNION_INSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
     plSoftVolComponent::kOutsidePower,      _T("PowerOutside"),     TYPE_FLOAT,     0, 0,   
         p_default, 0.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTUNION_OUTSIDE, IDC_COMP_SOFTUNION_OUTSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
-    end
+    p_end
 
 );
 
@@ -852,29 +852,29 @@ ParamBlockDesc2 gSoftVolIsectBk
         p_ui,           TYPE_NODELISTBOX, IDC_LIST_TARGS, 0, 0, IDC_DEL_TARGS,
         p_classID,      SOFTVOLUME_BASE_CID,
         p_accessor,     &gSoftVolIsectAccessor,
-        end,
+        p_end,
 
     plSoftVolIsectComponent::kPartialEnabled,  _T("EnablePartial"), TYPE_BOOL,      0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_SOFTISECT_ENABLEPARTIAL,
         p_enable_ctrls,     2, plSoftVolIsectComponent::kInsidePower, plSoftVolIsectComponent::kOutsidePower,
-        end,
+        p_end,
 
     plSoftVolIsectComponent::kInsidePower,      _T("PowerInside"),      TYPE_FLOAT,     0, 0,   
         p_default, 100.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTISECT_INSIDE, IDC_COMP_SOFTISECT_INSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
     plSoftVolIsectComponent::kOutsidePower,     _T("PowerOutside"),     TYPE_FLOAT,     0, 0,   
         p_default, 0.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTISECT_OUTSIDE, IDC_COMP_SOFTISECT_OUTSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
-    end
+    p_end
 
 );
 
@@ -978,30 +978,30 @@ ParamBlockDesc2 gSoftVolNegateBk
     plSoftVolNegateComponent::kSubVolume, _T("SubRegion"),  TYPE_INODE,     0, 0,
         p_prompt, IDS_COMP_SOFTVOLUME_NEGATE,
         p_accessor, &gSoftVolNegateAccessor,
-        end,
+        p_end,
 
     plSoftVolNegateComponent::kPartialEnabled,  _T("EnablePartial"), TYPE_BOOL,         0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_SOFTNEGATE_ENABLEPARTIAL,
         p_enable_ctrls,     2, plSoftVolComponent::kInsidePower, plSoftVolComponent::kOutsidePower,
-        end,
+        p_end,
 
     plSoftVolNegateComponent::kInsidePower,     _T("PowerInside"),      TYPE_FLOAT,     0, 0,   
         p_default, 100.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTNEGATE_INSIDE, IDC_COMP_SOFTNEGATE_INSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
     plSoftVolNegateComponent::kOutsidePower,        _T("PowerOutside"),     TYPE_FLOAT,     0, 0,   
         p_default, 0.0,
         p_range, 0.0, 100.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_SOFTNEGATE_OUTSIDE, IDC_COMP_SOFTNEGATE_OUTSIDE_SPIN, 1.0,
-        end,
+        p_end,
 
 
-    end
+    p_end
 
 );
 
@@ -1103,8 +1103,8 @@ ParamBlockDesc2 gLightRegionBk
 
     plLightRegionComponent::kSoftVolume, _T("Region"),  TYPE_INODE,     0, 0,
         p_accessor,     &gLightRegionAccessor,
-        end,
-    end
+        p_end,
+    p_end
 );
 
 plLightRegionComponent::plLightRegionComponent()
@@ -1252,34 +1252,34 @@ ParamBlockDesc2 gVisRegionBk
 
     plVisRegionComponent::kSoftVolume, _T("Region"),    TYPE_INODE,     0, 0,
         p_accessor,     nil,
-        end,
+        p_end,
 
     plVisRegionComponent::kAffectDraw,  _T("AffectDraw"), TYPE_BOOL,        0, 0,
         p_default,  TRUE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_VISREGION_DRAW,
-        end,
+        p_end,
 
     plVisRegionComponent::kAffectLight,  _T("AffectLight"), TYPE_BOOL,      0, 0,
         p_default,  TRUE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_VISREGION_LIGHT,
-        end,
+        p_end,
 
     plVisRegionComponent::kAffectOcc,  _T("AffectOcc"), TYPE_BOOL,      0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_VISREGION_OCC,
-        end,
+        p_end,
 
     plVisRegionComponent::kExcludes,  _T("Excludes"), TYPE_BOOL,        0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_VISREGION_NOT,
-        end,
+        p_end,
 
     plVisRegionComponent::kDisableNormal,   _T("DisableNormal"), TYPE_BOOL,         0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_VISREGION_DIS,
-        end,
+        p_end,
 
-    end
+    p_end
 );
 
 plVisRegionComponent::plVisRegionComponent()
@@ -1438,9 +1438,9 @@ ParamBlockDesc2 gRelevanceRegionBk
 
     plRelevanceRegionComponent::kSoftVolume, _T("Region"),  TYPE_INODE,     0, 0,
         p_accessor,     nil,
-        end,
+        p_end,
         
-    end
+    p_end
 );
 
 plRelevanceRegionComponent::plRelevanceRegionComponent()
@@ -1509,9 +1509,9 @@ ParamBlockDesc2 gEffVisSetBk
     plEffVisSetComponent::kHideNormal,  _T("HideNormal"), TYPE_BOOL,        0, 0,
         p_default,  FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_EFFVISSET_HIDENORMAL,
-        end,
+        p_end,
 
-    end
+    p_end
 );
 
 plEffVisSetComponent::plEffVisSetComponent()

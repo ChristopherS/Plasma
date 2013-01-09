@@ -103,9 +103,9 @@ You can contact Cyan Worlds, Inc. by email legal@cyan.com
 **      // params
 **      kPlayerStartingPoint,       _T("Start Point:"),     TYPE_STRING,        0, 0,   
 **      p_ui,           TYPE_EDITBOX, IDC_COMP_STARTPOINT,
-**      end,
+**      p_end,
 **  
-**      end
+**      p_end
 **      );
 **
 **  First is the name of the descriptor method that is to be used, in this case the ParamBlockDesc2
@@ -224,14 +224,14 @@ You can contact Cyan Worlds, Inc. by email legal@cyan.com
 **          (This is the implementor defined name that this GUI is using.  It is the name of the object that 
 **          you created a resource of.  We created an IDC_COMP_STARTINGPOINT which was of a CustEdit type.)
 **
-**        end
+**        p_end
 **          (This lets the constructor that makes uses to know that you have finished one of the p_ui param 
 **          blocks.)
 **          
 **
 **  FINAL REQUISITE STUFF:
 **
-**  end
+**  p_end
 **  );  
 **      (This is the conclusion of the Block descriptor.  Sort of intuitive...)
 **

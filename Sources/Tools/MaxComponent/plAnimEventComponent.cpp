@@ -104,19 +104,19 @@ ParamBlockDesc2 gAnimEventBlock
     IDD_COMP_DETECTOR_ANIM, IDS_COMP_DETECTOR_ANIM, 0, 0, &gAnimEventProc,
 
     kAnimComp,  _T("animComp"), TYPE_INODE, 0, 0,
-        end,
+        p_end,
 
     kAnimNode,  _T("animNode"), TYPE_INODE, 0, 0,
-        end,
+        p_end,
 
     kAnimBegin, _T("animBegin"),    TYPE_BOOL,  0, 0,
-        end,
+        p_end,
     kAnimEnd,   _T("animEnd"),      TYPE_BOOL,  0, 0,
-        end,
+        p_end,
     kAnimMarkers,   _T("animMarkers"),  TYPE_STRING_TAB, 0,     0, 0,
-        end,
+        p_end,
 
-    end
+    p_end
 );
 
 
@@ -415,22 +415,22 @@ ParamBlockDesc2 gMtlEventBlock
     IDD_COMP_DETECTOR_MTL, IDS_COMP_DETECTOR_MTL, 0, 0, &gMtlEventProc,
 
     kMtlMtl,    _T("mtl"),          TYPE_MTL,           0, 0,
-        end,
+        p_end,
 
     kMtlNode,   _T("node"),         TYPE_INODE,         0, 0,
-        end,
+        p_end,
 
     kMtlAnim,   _T("anim"),         TYPE_STRING,        0, 0,
-        end,
+        p_end,
 
     kMtlBegin,  _T("animBegin"),    TYPE_BOOL,          0, 0,
-        end,
+        p_end,
     kMtlEnd,    _T("animEnd"),      TYPE_BOOL,          0, 0,
-        end,
+        p_end,
     kMtlMarkers,_T("markers"),      TYPE_STRING_TAB, 0, 0, 0,
-        end,
+        p_end,
 
-    end
+    p_end
 );
 
 

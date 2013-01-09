@@ -67,5 +67,5 @@ ParamBlockDesc2 gActiveBlock
 (
     plComponent::kBlkComp, _T("activeComp"), 0, &gActiveDesc, P_AUTO_CONSTRUCT, plComponent::kRefComp,
         
-    end
+    p_end
 );

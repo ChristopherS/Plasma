@@ -78,4 +78,8 @@ You can contact Cyan Worlds, Inc. by email legal@cyan.com
 // Local
 #include "resource.h"
 
+#if MAX_VERSION_MAJOR < 15
+#   define p_end end
+#endif
+
 #endif // _MaxPlasmaMtls_Pch_inc_

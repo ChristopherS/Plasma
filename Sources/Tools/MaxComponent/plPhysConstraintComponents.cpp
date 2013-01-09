@@ -246,13 +246,13 @@ ParamBlockDesc2 gPhysHingeConstraintBk
         p_ui,       TYPE_RADIO, 3, IDC_COMP_PHYS_HINGE_AXIS_RADIO, IDC_COMP_PHYS_HINGE_AXIS_RADIO2, IDC_COMP_PHYS_HINGE_AXIS_RADIO3,
         p_vals,                     plPhysHingeConstraintComponent::kXAxis,     plPhysHingeConstraintComponent::kYAxis,     plPhysHingeConstraintComponent::kZAxis,
         p_default, plPhysHingeConstraintComponent::kZAxis,
-        end,
+        p_end,
 
     plPhysHingeConstraintComponent::kUseParentBool, _T("UseParentChkBx"),   TYPE_BOOL,  P_ANIMATABLE, 0,    
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_PHYS_USE_PARENT_BOOL,
         p_default, TRUE,
         p_enable_ctrls, 2, plPhysHingeConstraintComponent::kParent, plPhysHingeConstraintComponent::kParentPinnedBool,
-        end,
+        p_end,
 
     
     plPhysHingeConstraintComponent::kParent,  _T("Parent"), TYPE_INODE,     0, 0,
@@ -260,13 +260,13 @@ ParamBlockDesc2 gPhysHingeConstraintBk
         p_sclassID, GEOMOBJECT_CLASS_ID,
         p_prompt, IDS_COMP_PHYS_CHOSEN_BASE,
         p_accessor, &gPhysConstraintAccessor,
-        end,
+        p_end,
 
     
     plPhysHingeConstraintComponent::kParentPinnedBool, _T("ParentPinnedChkBx"), TYPE_BOOL,  P_ANIMATABLE, 0,    
         p_default, FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_PHYS_PINNED_STATE_BOOL,
-        end,
+        p_end,
 
 
     plPhysHingeConstraintComponent::kFriction,  _T("Friction"),     TYPE_FLOAT,     P_ANIMATABLE, 0,    
@@ -274,21 +274,21 @@ ParamBlockDesc2 gPhysHingeConstraintBk
         p_range, 0.0, 50000.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_PHYS_FRICTION_SLIDER, IDC_COMP_PHYS_FRICTION_SPIN1, 1.0,
-        end,
+        p_end,
 
     plPhysHingeConstraintComponent::kUpperAngle,    _T("UpperLimit"),       TYPE_FLOAT,     P_ANIMATABLE, 0,    
         p_default, 0.0,
         p_range, -360.0, 360.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_FLOAT, 
         IDC_COMP_PHYS_OPENANGLE_EDIT, IDC_COMP_PHYS_OPENANGLE_SPIN, 1.0,
-        end,
+        p_end,
 
     plPhysHingeConstraintComponent::kLowerAngle,    _T("LowerLimit"),       TYPE_FLOAT,     P_ANIMATABLE, 0,    
         p_default, 360.0,
         p_range, -360.0, 360.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_FLOAT, 
         IDC_COMP_PHYS_CLOSEANGLE_EDIT, IDC_COMP_PHYS_CLOSEANGLE_SPIN, 1.0,
-        end,
+        p_end,
 
 
             
@@ -297,22 +297,22 @@ ParamBlockDesc2 gPhysHingeConstraintBk
         p_range, 0.0, 1.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_PHYS_TAU_SLIDER, IDC_COMP_PHYS_TAU_SPIN, .01f,
-        end,
+        p_end,
 
     plPhysHingeConstraintComponent::kStrength,  _T("Strength"),     TYPE_FLOAT,     P_ANIMATABLE, 0,    
         p_default, 0.5,
         p_range, 0.0, 1.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_PHYS_STRENGTH_SLIDER, IDC_COMP_PHYS_STRENGTH_SPIN, .01f,
-        end,
+        p_end,
 
     plPhysHingeConstraintComponent::kChildPinnedBool, _T("ChildPinnedChkBx"),   TYPE_BOOL,  P_ANIMATABLE, 0,    
         p_default, FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_PHYS_PINNED_STATE_BOOL2,
-        end,
+        p_end,
 
 
-    end
+    p_end
 );
 
 
@@ -563,37 +563,37 @@ ParamBlockDesc2 gPhysBridgeConstraintBk
     IDD_COMP_PHYS_BRIDGE, IDS_COMP_PHYS_BRIDGE, 0, 0, &gBridgeComponentProc,
     
     plPhysBridgeComponent::kSections,  _T("Sections"),  TYPE_INODE_TAB, 0,      0, 0,
-        end,
+        p_end,
 
     plPhysBridgeComponent::kUpperAngle, _T("UpperLimit"),       TYPE_FLOAT,     0, 0,   
         p_default, 15.0,
         p_range, 0.0, 360.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_FLOAT, 
         IDC_COMP_PHYS_OPENANGLE_EDIT, IDC_COMP_PHYS_OPENANGLE_SPIN, 1.0,
-        end,
+        p_end,
 
     plPhysBridgeComponent::kLowerAngle, _T("LowerLimit"),       TYPE_FLOAT,     0, 0,   
         p_default, -15.0,
         p_range, -360.0, 0.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_FLOAT, 
         IDC_COMP_PHYS_CLOSEANGLE_EDIT, IDC_COMP_PHYS_CLOSEANGLE_SPIN, 1.0,
-        end,
+        p_end,
 
     plPhysBridgeComponent::kStiffness,  _T("Stiffness"),        TYPE_FLOAT,     0, 0,   
         p_default, 1.0,
         p_range, 0.0, 1.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_FLOAT,
         IDC_STIFFNESS_EDIT, IDC_STIFFNESS_SPIN, 0.01,
-        end,
+        p_end,
 
     plPhysBridgeComponent::kStrength,   _T("Strength"),     TYPE_FLOAT,     0, 0,   
         p_default, 0.4,
         p_range, 0.0, 1.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_FLOAT,
         IDC_STRENGTH_EDIT, IDC_STRENGTH_SPIN, 0.01,
-        end,
+        p_end,
         
-    end
+    p_end
 );
 
 plPhysBridgeComponent::plPhysBridgeComponent() : fIsValidated(false)
@@ -914,37 +914,37 @@ ParamBlockDesc2 gPhysSSConstraintBk
         p_range, 0.0, 500.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_PHY_SS_LENGTH_EDIT, IDC_COMP_PHY_SS_LENGTH_SPIN, 1.0,
-        end,
+        p_end,
 
     plStrongSpringConstraintComponent::kRebound,    _T("Rebound"),  TYPE_FLOAT,     P_ANIMATABLE, 0,    
         p_default, 0.0,
         p_range, 0.0, 1.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_PHYS_SS_REBOUND_EDIT, IDC_COMP_PHYS_SS_REBOUND_SPIN, 0.1,
-        end,
+        p_end,
 
     plStrongSpringConstraintComponent::kStrength,   _T("Strength"), TYPE_FLOAT,     P_ANIMATABLE, 0,    
         p_default, 0.5,
         p_range, 0.0, 1.0,
         p_ui,   TYPE_SPINNER,   EDITTYPE_POS_FLOAT, 
         IDC_COMP_PHYS_SS_STRENGTH_EDIT, IDC_COMP_PHYS_SS_STRENGTH_SPIN, 0.1,
-        end,
+        p_end,
     
     plStrongSpringConstraintComponent::kParent,  _T("Parent"),  TYPE_INODE,     0, 0,
         p_ui,   TYPE_PICKNODEBUTTON, IDC_COMP_PHYS_PARENT,
         //p_sclassID,   GEOMOBJECT_CLASS_ID,
         p_prompt, IDS_COMP_PHYS_CHOSEN_BASE,
         p_accessor, &gPhysConstraintAccessor,
-        end,
+        p_end,
 
     plStrongSpringConstraintComponent::kParentPinnedBool, _T("PinnedChkBx"),    TYPE_BOOL,  0, 0,   
         p_default, FALSE,
         p_ui,   TYPE_SINGLECHEKBOX, IDC_COMP_PHYS_USE_PARENT_BOOL,
-        end,
+        p_end,
 
 
 
-    end
+    p_end
 );
 
 
