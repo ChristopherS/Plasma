@@ -435,6 +435,7 @@ void plNetClientMgr::IUnloadNPCs()
     for (size_t i = fNPCKeys.size(); i > 0; --i)
         plAvatarMgr::GetInstance()->UnLoadAvatar(fNPCKeys[i-1], false);
     hsAssert(fNPCKeys.empty(), "Still npcs left when linking out");
+    fNPCNames.empty();
 }
 
 //
@@ -793,6 +794,11 @@ void plNetClientMgr::AddNPCKey(const plKey& npc)
     // note: npc keys have little sanity checking...
     hsAssert(npc, "adding nil npc key? naughty, naughty...");
     fNPCKeys.push_back(npc);
+}
+
+void plNetClientMgr::AddNPCName(plString name)
+{
+    fNPCNames.push_back(name);
 }
 
 bool plNetClientMgr::IsNPCKey(const plKey& npc, int* idx) const

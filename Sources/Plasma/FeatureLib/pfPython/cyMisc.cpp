@@ -983,6 +983,24 @@ PyObject* cyMisc::GetNPCCount()
     return PyInt_FromLong(plNetClientMgr::GetInstance()->NPCKeys().size());
 }
 
+PyObject* cyMisc::GetNPCByName(plString name)
+{
+    std::vector<plString> nameVec = plNetClientMgr::GetInstance()->GetNPCNames();
+    for (size_t i = 0; i < nameVec.size(); ++i)
+    {
+        if (name == nameVec[i])
+        {
+            plSceneObject *so = plSceneObject::ConvertNoRef(plNetClientMgr::GetInstance()->GetNPC(i));
+            if (so)
+                return pySceneObject::New(so->GetKey());
+            break; // We found our NPC, so no need to search through the rest
+        }
+    }
+    char* errmsg = "NPC not found";
+    PyErr_SetString(PyExc_NameError, errmsg);
+    PYTHON_RETURN_ERROR;
+}
+
 #if 1
 #include "plStatusLog/plStatusLog.h"
 //

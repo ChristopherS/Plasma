@@ -200,6 +200,18 @@ PYTHON_GLOBAL_METHOD_DEFINITION(PtGetNPCByID, args, "This will return the NPC wi
     return cyMisc::GetNPC(npcID);
 }
 
+PYTHON_GLOBAL_METHOD_DEFINITION(PtGetNPCByName, args, "This will return the NPC with the specific UserString")
+{
+    PyObject* name;
+    if (!PyArg_ParseTuple(args, "O", &name) || !PyString_CheckEx(name))
+    {
+        PyErr_SetString(PyExc_TypeError, "PtGetNPCByName expects a string object");
+        PYTHON_RETURN_ERROR;
+    }
+
+    return cyMisc::GetNPCByName(PyString_AsStringEx(name));
+}
+
 PYTHON_GLOBAL_METHOD_DEFINITION_NOARGS(PtGetNPCCount, "Returns the number of NPCs in the current age")
 {
     return cyMisc::GetNPCCount();
@@ -525,6 +537,7 @@ void cyMisc::AddPlasmaMethods(std::vector<PyMethodDef> &methods)
     PYTHON_GLOBAL_METHOD(methods, PtGetAvatarKeyFromClientID);
     PYTHON_GLOBAL_METHOD(methods, PtGetClientIDFromAvatarKey);
     PYTHON_GLOBAL_METHOD(methods, PtGetNPCByID);
+    PYTHON_GLOBAL_METHOD(methods, PtGetNPCByName);
     PYTHON_GLOBAL_METHOD_NOARGS(methods, PtGetNPCCount);
     PYTHON_GLOBAL_METHOD_NOARGS(methods, PtGetNumRemotePlayers);
 

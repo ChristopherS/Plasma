@@ -152,6 +152,7 @@ private:
     plKey       fLocalPlayerKey;
     plKeyVec    fRemotePlayerKeys;
     plKeyVec    fNPCKeys;
+    std::vector<plString> fNPCNames;
     
     class plNetClientMgrMsg *   fDisableMsg;
 
@@ -309,7 +310,9 @@ public:
     // npc clones
     const plKeyVec& NPCKeys() const { return fNPCKeys; }
     plSynchedObject* GetNPC(uint32_t i) const;
+    const std::vector<plString> GetNPCNames() { return fNPCNames; }
     void AddNPCKey(const plKey& npc);
+    void AddNPCName(plString name);
     bool IsNPCKey(const plKey& npc, int* idx=nil) const;
     
     // remote players

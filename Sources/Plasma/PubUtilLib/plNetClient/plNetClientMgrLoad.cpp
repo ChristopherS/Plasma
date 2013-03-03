@@ -128,7 +128,10 @@ plKey plNetClientMgr::ILoadClone(plLoadCloneMsg *pCloneMsg)
                 else
                     AddRemotePlayerKey(cloneKey);
             else // hey, we got a quab or yeesha... or some other such devilry...
+            {
                 AddNPCKey(cloneKey);
+                AddNPCName(loadAvMsg->GetUserStr());
+            }
         }
 
         plKey cloneNodeKey = hsgResMgr::ResMgr()->FindKey(kNetClientCloneRoom_KEY);

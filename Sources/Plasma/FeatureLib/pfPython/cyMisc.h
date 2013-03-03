@@ -448,6 +448,7 @@ public:
     //
     static PyObject* GetNPC(int npcID);
     static PyObject* GetNPCCount();
+    static PyObject* GetNPCByName(plString name);
 
     /////////////////////////////////////////////////////////////////////////////
     //
