@@ -60,18 +60,18 @@ You can contact Cyan Worlds, Inc. by email legal@cyan.com
 // plNPCSpawnMod ctor
 plNPCSpawnMod::plNPCSpawnMod()
 : fModelName(nil),
-  fAccountName(nil),
+  fNPCName(nil),
   fAutoSpawn(false),
   fNotify(nil)
 {
 }
 
 // plNPCSpawnMod ctor modelName accountName
-plNPCSpawnMod::plNPCSpawnMod(const char * modelName, const char * accountName, bool autoSpawn)
+plNPCSpawnMod::plNPCSpawnMod(const char * modelName, const char * npcName, bool autoSpawn)
 : fAutoSpawn(autoSpawn), fNotify(nil)
 {
     fModelName = hsStrcpy(modelName);
-    fAccountName = hsStrcpy(accountName);
+    fNPCName = hsStrcpy(accountName);
 }
 
 // plNPCSpawnMod dtor
@@ -82,10 +82,10 @@ plNPCSpawnMod::~plNPCSpawnMod()
         delete[] fModelName;
         fModelName = nil;
     }
-    if(fAccountName)
+    if(fNPCName)
     {
-        delete[] fAccountName;
-        fAccountName = nil;
+        delete[] fNPCName;
+        fNPCName = nil;
     }
     if (fNotify)
         fNotify->UnRef();
@@ -114,7 +114,7 @@ bool plNPCSpawnMod::Trigger()
             plKey spawnPoint = GetTarget(0)->GetKey();
 
             // Note: we will be unloaded by the NetApp's NPC magick
-            fSpawnedKey = plAvatarMgr::GetInstance()->LoadAvatar(fModelName, fAccountName, false, spawnPoint, nil);
+            fSpawnedKey = plAvatarMgr::GetInstance()->LoadAvatar(fModelName, nil, false, spawnPoint, nil, fNPCName);
 
             ISendNotify(fSpawnedKey);
         }
@@ -141,7 +141,7 @@ void plNPCSpawnMod::Read(hsStream *stream, hsResMgr *mgr)
     plSingleModifier::Read(stream, mgr);
 
     fModelName = stream->ReadSafeString();
-    fAccountName = stream->ReadSafeString();
+    fNPCName = stream->ReadSafeString();
     fAutoSpawn = stream->ReadBool();
     if(stream->ReadBool())
         fNotify = plNotifyMsg::ConvertNoRef(mgr->ReadCreatable(stream));
@@ -153,7 +153,7 @@ void plNPCSpawnMod::Write(hsStream *stream, hsResMgr *mgr)
     plSingleModifier::Write(stream, mgr);
     
     stream->WriteSafeString(fModelName);
-    stream->WriteSafeString(fAccountName);
+    stream->WriteSafeString(fNPCName);
     stream->WriteBool(fAutoSpawn);
     if(fNotify)
     {

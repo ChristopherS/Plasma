@@ -63,7 +63,7 @@ void DummyCodeIncludFuncNPCSpawn() {}
 enum
 {
     kModelName,         // v1
-    kAccountName,       // v1
+    kNPCName,
     kAutoSpawn,         // v1
 };
 
@@ -119,8 +119,8 @@ ParamBlockDesc2 gNPCSpawnBlock
         end,
 
     //params
-    kAccountName,   _T("AccountName"),  TYPE_STRING,    0, 0,
-        p_ui,   TYPE_EDITBOX, IDC_NPC_SPAWN_ACCOUNT_TEXT_BOX,
+    kNPCName,   _T("NPCName"),  TYPE_STRING,    0, 0,
+        p_ui,   TYPE_EDITBOX, IDC_NPC_SPAWN_NAME_TEXT_BOX,
         end,
 
     kAutoSpawn, _T("AutoSpawn"), TYPE_BOOL, 0,  0,
@@ -182,10 +182,10 @@ bool plNPCSpawnComp::PreConvert(plMaxNode *node, plErrorMsg *pErrMsg)
     if (IIsValid())
     {
         const char *modelName = fCompPB->GetStr(kModelName);
-        const char *accountName = fCompPB->GetStr(kAccountName);
+        const char *npcName = fCompPB->GetStr(kNPCName);
         bool autoSpawn = fCompPB->GetInt(kAutoSpawn) ? true : false;
 
-        plNPCSpawnMod *mod = new plNPCSpawnMod(modelName, accountName, autoSpawn);
+        plNPCSpawnMod *mod = new plNPCSpawnMod(modelName, npcName, autoSpawn);
         fMods[node] = mod;
 
         // this is used by the python file modifier to figure out which component we're coming from

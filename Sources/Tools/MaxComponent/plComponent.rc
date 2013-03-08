@@ -4486,8 +4486,8 @@ BEGIN
     CONTROL         "Custom1",IDC_NPC_SPAWN_MODEL_TEXT_BOX,"CustEdit",
                     WS_TABSTOP,9,25,89,10
     GROUPBOX        "General Properties",IDC_STATIC,3,0,101,93
-    LTEXT           "Account Name:",IDC_STATIC,9,40,50,8
-    CONTROL         "Custom1",IDC_NPC_SPAWN_ACCOUNT_TEXT_BOX,"CustEdit",
+    LTEXT           "NPC Name:",IDC_STATIC,9,40,50,8
+    CONTROL         "Custom1",IDC_NPC_SPAWN_NAME_TEXT_BOX,"CustEdit",
                     WS_TABSTOP,9,52,89,10
     CONTROL         "Spawn Automatically",IDC_NPC_SPAWN_AUTOSPAWN_BOOL,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,71,81,10
