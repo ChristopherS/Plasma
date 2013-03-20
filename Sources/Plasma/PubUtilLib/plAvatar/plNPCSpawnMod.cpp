@@ -71,7 +71,7 @@ plNPCSpawnMod::plNPCSpawnMod(const char * modelName, const char * npcName, bool 
 : fAutoSpawn(autoSpawn), fNotify(nil)
 {
     fModelName = hsStrcpy(modelName);
-    fNPCName = hsStrcpy(accountName);
+    fNPCName = hsStrcpy(npcName);
 }
 
 // plNPCSpawnMod dtor

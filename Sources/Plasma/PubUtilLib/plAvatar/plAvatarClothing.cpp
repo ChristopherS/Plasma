@@ -1142,13 +1142,29 @@ void plClothingOutfit::RemoveMaintainerOutfit()
 
 static plRandom sRandom;
 
-void plClothingOutfit::WearRandomOutfit()
+void plClothingOutfit::WearRandomOutfit(size_t seed)
 {
+    sRandom.SetSeed(seed);
     plClothingMgr *cMgr = plClothingMgr::GetClothingMgr();
     hsTArray<plClothingItem *>items;
 
+    plString excludeClothing[] = {"Icon","Suit","DniHelmet","DniFace","Atrus","Catherine","Santa","PattysHat"};
+    size_t excludeClothingLength = 8;
+
+    float hairColors[][3] = {{0,0,0},{1,1,1},{0.46,0.15,0.15},{0.60,0.25,0.11},{0.48,0.22,0.12},{0.68,0.37,0.15},{0.98,0.81,0.58},{0.5,0.5,0.5}};
+    float skinColors[][3] = {{0.94,0.83,0.64},{0.94,0.77,0.59},{0.88,0.66,0.49},{0.61,0.41,0.31},{0.26,0.18,0.14}};
+    float pantsColors[][3] = {{0,0.27,0.74},{0.53,0.75,1},{0.85,1,0.57},{0.38,0.16,0}};
+
+    bool match;
+    float morph;
+    float wgtPlus = 0;
+    float wgtMinus = 0;
+
+    morph = sRandom.RandMinusOneToOne();
+    (morph > 0) ? (wgtPlus = morph) : (wgtMinus = -morph);
+
     // Wear one thing of each type
-    uint32_t i, j;
+    uint32_t i, j, k;
     for (i = 0; i < plClothingMgr::kMaxType; i++)
     {
         if (i == plClothingMgr::kTypeAccessory)
@@ -1156,28 +1172,68 @@ void plClothingOutfit::WearRandomOutfit()
 
         items.Reset();
         cMgr->GetItemsByGroupAndType(fGroup, (uint8_t)i, items);
-        j = (uint32_t)(sRandom.RandZeroToOne() * items.GetCount());
+        do
+        {
+            match = false;
+            j = (uint32_t)(sRandom.RandZeroToOne() * items.GetCount());
+            plString name = items[j]->GetName();
+            for(k = 0; k < excludeClothingLength; k++)
+            {
+                if (name.Find(excludeClothing[k]) >= 0)
+                {
+                    match = true;
+                    break;
+                }
+            }
+        }
+        while (match);
 
-        float r1 = sRandom.RandZeroToOne();
-        float g1 = sRandom.RandZeroToOne();
-        float b1 = sRandom.RandZeroToOne();
+        float r1 = 0;
+        float g1 = 0;
+        float b1 = 0;
+
+        if (i == plClothingMgr::kTypePants)
+        {
+            k = sRandom.RandRangeI(0,sizeof(pantsColors)/(sizeof(float)*3));
+            r1 = pantsColors[k][0];
+            g1 = pantsColors[k][1];
+            b1 = pantsColors[k][2];
+        }
+        else if (i == plClothingMgr::kTypeHair)
+        {
+            k = sRandom.RandRangeI(0,sizeof(hairColors)/(sizeof(float)*3));
+            r1 = hairColors[k][0];
+            g1 = hairColors[k][1];
+            b1 = hairColors[k][2];
+        }
+        else
+        {
+            r1 = sRandom.RandZeroToOne();
+            g1 = sRandom.RandZeroToOne();
+            b1 = sRandom.RandZeroToOne();
+        }
         float r2 = sRandom.RandZeroToOne();
         float g2 = sRandom.RandZeroToOne();
         float b2 = sRandom.RandZeroToOne();
 
         AddItem(items[j], false, false);
-        TintItem(items[j], r1, g1, b1, false, false, false, true, 1);
-        TintItem(items[j], r2, g2, b2, false, false, false, true, 2);
+        TintItem(items[j], r1, g1, b1, false, true, false, true, plClothingElement::kLayerTint1);
+        TintItem(items[j], r2, g2, b2, false, true, false, true, plClothingElement::kLayerTint2);
+        MorphItem(items[j], 0, 0, wgtPlus);
+        MorphItem(items[j], 0, 1, wgtMinus);
 
-        plClothingItem *match = cMgr->GetLRMatch(items[j]);
-        if (match)
+        plClothingItem *matchItem = cMgr->GetLRMatch(items[j]);
+        if (matchItem)
         {
-            AddItem(match, false, false);
-            TintItem(match, r1, g1, b1, false, false, false, true, 1);
-            TintItem(match, r2, g2, b2, false, false, false, true, 2);
+            AddItem(matchItem, false, false);
+            TintItem(matchItem, r1, g1, b1, false, true, false, true, plClothingElement::kLayerTint1);
+            TintItem(matchItem, r2, g2, b2, false, true, false, true, plClothingElement::kLayerTint2);
+            MorphItem(matchItem, 0, 0, wgtPlus);
+            MorphItem(matchItem, 0, 1, wgtMinus);
         }
     }
-    TintSkin(sRandom.RandZeroToOne(), sRandom.RandZeroToOne(), sRandom.RandZeroToOne());
+    k = sRandom.RandRangeI(0,sizeof(skinColors)/(sizeof(float)*3));
+    TintSkin(skinColors[k][0], skinColors[k][1], skinColors[k][2]);
 }
 
 bool plClothingOutfit::ReadItems(hsStream* s, hsResMgr* mgr, bool broadcast /* = true */)
