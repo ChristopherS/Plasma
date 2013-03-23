@@ -151,8 +151,7 @@ private:
     // cached char info
     plKey       fLocalPlayerKey;
     plKeyVec    fRemotePlayerKeys;
-    plKeyVec    fNPCKeys;
-    std::vector<plString> fNPCNames;
+    std::map<plString, plKey>    fNPCKeys;
     
     class plNetClientMgrMsg *   fDisableMsg;
 
@@ -308,12 +307,10 @@ public:
     int UploadPlayerVault(uint32_t vaultFlags);
 
     // npc clones
-    const plKeyVec& NPCKeys() const { return fNPCKeys; }
-    plSynchedObject* GetNPC(uint32_t i) const;
-    const std::vector<plString> GetNPCNames() { return fNPCNames; }
-    void AddNPCKey(const plKey& npc);
-    void AddNPCName(plString name);
-    bool IsNPCKey(const plKey& npc, int* idx=nil) const;
+    const std::map<plString, plKey> GetNPCList() { return fNPCKeys; }
+    plSynchedObject* GetNPC(plString name);
+    void AddNPCKey(const plKey& npc, plString name);
+    bool IsNPCKey(const plKey& npc, bool erase=false);
     
     // remote players
     const plKeyVec& RemotePlayerKeys() const { return fRemotePlayerKeys;  }

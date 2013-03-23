@@ -129,8 +129,7 @@ plKey plNetClientMgr::ILoadClone(plLoadCloneMsg *pCloneMsg)
                     AddRemotePlayerKey(cloneKey);
             else // hey, we got a quab or yeesha... or some other such devilry...
             {
-                AddNPCKey(cloneKey);
-                AddNPCName(loadAvMsg->GetUserStr());
+                AddNPCKey(cloneKey, loadAvMsg->GetUserStr());
             }
         }
 
@@ -153,9 +152,7 @@ plKey plNetClientMgr::ILoadClone(plLoadCloneMsg *pCloneMsg)
 
         // need to drop our ref if it's an NPC
         // remote players handled by plPlayerPageMsg--don't sweat that
-        plKeyVec::iterator it = std::find(fNPCKeys.begin(), fNPCKeys.end(), cloneKey);
-        if (it != fNPCKeys.end())
-            fNPCKeys.erase(it);
+        IsNPCKey(cloneKey, true);
 
         ICheckPendingStateLoad(hsTimer::GetSysSeconds());
         plSynchEnabler p(false);    // turn off dirty tracking while in this function

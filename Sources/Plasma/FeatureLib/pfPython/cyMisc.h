@@ -442,12 +442,12 @@ public:
     /////////////////////////////////////////////////////////////////////////////
     //
     //  Function   : GetNPC
-    //  PARAMETERS : npcID  - is the ID of a NPC
+    //  PARAMETERS : name - UserStr of the NPC
     //
     //  PURPOSE    : Returns a pySceneobject of a NPC
     //
-    static PyObject* GetNPC(int npcID);
     static PyObject* GetNPCCount();
+    static PyObject* GetNPCList();
     static PyObject* GetNPCByName(plString name);
 
     /////////////////////////////////////////////////////////////////////////////

@@ -963,39 +963,41 @@ PyObject* cyMisc::GetLocalPlayer()
 /////////////////////////////////////////////////////////////////////////////
 //
 //  Function   : GetNPC
-//  PARAMETERS : npcID  - is the ID of an NPC
+//  PARAMETERS : name - UserStr of the NPC
 //
 //  PURPOSE    : Returns a pySceneobject of an NPC
 //
-PyObject* cyMisc::GetNPC(int npcID)
-{
-    plSceneObject *so = plSceneObject::ConvertNoRef(plNetClientMgr::GetInstance()->GetNPC(npcID));
-    if ( so )
-        return pySceneObject::New(so->GetKey());
-
-    char* errmsg = "NPC not found";
-    PyErr_SetString(PyExc_NameError, errmsg);
-    PYTHON_RETURN_ERROR;
-}
-
 PyObject* cyMisc::GetNPCCount()
 {
-    return PyInt_FromLong(plNetClientMgr::GetInstance()->NPCKeys().size());
+    return PyInt_FromLong(plNetClientMgr::GetInstance()->GetNPCList().size());
+}
+
+PyObject* cyMisc::GetNPCList()
+{
+    std::map<plString,plKey> npcs = plNetClientMgr::GetInstance()->GetNPCList();
+    PyObject * npcList = PyList_New(0);
+    for(std::map<plString,plKey>::iterator it=npcs.begin(); it!=npcs.end(); ++it)
+    {
+        PyObject* npcTuple = PyTuple_New(2);
+        PyObject* npcName = PyString_FromPlString(it->first);
+        PyObject* npcObj = pySceneObject::New(plSceneObject::ConvertNoRef(plNetClientMgr::GetInstance()->GetNPC(it->first))->GetKey());
+
+        PyTuple_SetItem(npcTuple, 0, npcName);
+        PyTuple_SetItem(npcTuple, 1, npcObj);
+
+        PyList_Append(npcList, npcTuple);
+    }
+
+    return npcList;
+
 }
 
 PyObject* cyMisc::GetNPCByName(plString name)
 {
-    std::vector<plString> nameVec = plNetClientMgr::GetInstance()->GetNPCNames();
-    for (size_t i = 0; i < nameVec.size(); ++i)
-    {
-        if (name == nameVec[i])
-        {
-            plSceneObject *so = plSceneObject::ConvertNoRef(plNetClientMgr::GetInstance()->GetNPC(i));
-            if (so)
-                return pySceneObject::New(so->GetKey());
-            break; // We found our NPC, so no need to search through the rest
-        }
-    }
+    plSceneObject *so = plSceneObject::ConvertNoRef(plNetClientMgr::GetInstance()->GetNPC(name));
+    if (so)
+        return pySceneObject::New(so->GetKey());
+
     char* errmsg = "NPC not found";
     PyErr_SetString(PyExc_NameError, errmsg);
     PYTHON_RETURN_ERROR;

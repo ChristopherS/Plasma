@@ -432,10 +432,9 @@ void plNetClientMgr::IUnloadRemotePlayers()
 //
 void plNetClientMgr::IUnloadNPCs()
 {
-    for (size_t i = fNPCKeys.size(); i > 0; --i)
-        plAvatarMgr::GetInstance()->UnLoadAvatar(fNPCKeys[i-1], false);
+    for (std::map<plString,plKey>::iterator it=fNPCKeys.begin(); it!=fNPCKeys.end(); ++it)
+        plAvatarMgr::GetInstance()->UnLoadAvatar(it->second, false);
     hsAssert(fNPCKeys.empty(), "Still npcs left when linking out");
-    fNPCNames.empty();
 }
 
 //
@@ -784,32 +783,30 @@ plSynchedObject* plNetClientMgr::GetLocalPlayer(bool forceLoad) const
             plSynchedObject::ConvertNoRef(fLocalPlayerKey->ObjectIsLoaded()) : nil; 
 }
 
-plSynchedObject* plNetClientMgr::GetNPC(uint32_t i) const
+plSynchedObject* plNetClientMgr::GetNPC(plString name)
 {
-    return fNPCKeys[i] ? plSynchedObject::ConvertNoRef(fNPCKeys[i]->ObjectIsLoaded()) : nil; 
+    return fNPCKeys[name] ? plSynchedObject::ConvertNoRef(fNPCKeys[name]->ObjectIsLoaded()) : nil; 
 }
 
-void plNetClientMgr::AddNPCKey(const plKey& npc)
+void plNetClientMgr::AddNPCKey(const plKey& npc, plString name)
 {
     // note: npc keys have little sanity checking...
     hsAssert(npc, "adding nil npc key? naughty, naughty...");
-    fNPCKeys.push_back(npc);
+    fNPCKeys[name] = npc;
 }
 
-void plNetClientMgr::AddNPCName(plString name)
-{
-    fNPCNames.push_back(name);
-}
-
-bool plNetClientMgr::IsNPCKey(const plKey& npc, int* idx) const
+bool plNetClientMgr::IsNPCKey(const plKey& npc, bool erase)
 {
     if (npc)
     {
-        plKeyVec::const_iterator it = std::find(fNPCKeys.begin(), fNPCKeys.end(), npc);
-        bool found = it != fNPCKeys.end();
-        if (idx)
-            *idx = found ? (it - fNPCKeys.begin()) : -1;
-        return found;
+        for (std::map<plString,plKey>::iterator it=fNPCKeys.begin(); it!=fNPCKeys.end(); ++it)
+            if (it->second == npc)
+            {
+                if (erase)
+                    fNPCKeys.erase(it);
+                return true;
+            }
+        return false;
     }
     return false;
 }
