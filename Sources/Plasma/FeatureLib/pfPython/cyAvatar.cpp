@@ -1086,6 +1086,28 @@ bool cyAvatar::WearClothingItemU(const char* clothing_name, bool update)
 
 /////////////////////////////////////////////////////////////////////////////
 //
+//  Function   : WearRandomClothing
+//  PARAMETERS : seed for random number generator
+//
+//  PURPOSE    : randomize clothing outfit
+//
+void cyAvatar::WearRandomClothing(size_t seed)
+{
+    const plArmatureMod *avMod = nil;
+    if (fRecvr.Count() > 0 && fRecvr[0] != nil)
+    {
+        plSceneObject *so = plSceneObject::ConvertNoRef(fRecvr[0]->GetObjectPtr());
+        if (so)
+        {
+            avMod = (plArmatureMod*)so->GetModifierByType(plArmatureMod::Index());
+            if (avMod)
+                avMod->GetClothingOutfit()->WearRandomOutfit(seed);
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
 //  Function   : RemoveClothingItemU
 //  PARAMETERS : --- with update flag
 //

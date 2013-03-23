@@ -282,6 +282,19 @@ PYTHON_METHOD_DEFINITION(ptAvatar, wearClothingItem, args)
     PYTHON_RETURN_BOOL(self->fThis->WearClothingItemU(clothingNameStr.c_str(), update != 0));
 }
 
+PYTHON_METHOD_DEFINITION(ptAvatar, wearRandomClothing, args)
+{
+    size_t seed = 0;
+    if (!PyArg_ParseTuple(args, "i", &seed))
+    {
+        PyErr_SetString(PyExc_TypeError, "wearRandomClothing expects an integer");
+        PYTHON_RETURN_ERROR;
+    }
+
+    self->fThis->WearRandomClothing(seed);
+    PYTHON_RETURN_NONE;
+}
+
 PYTHON_METHOD_DEFINITION(ptAvatar, removeClothingItem, args)
 {
     char* clothingName = NULL;
@@ -619,6 +632,7 @@ PYTHON_START_METHODS_TABLE(ptAvatar)
                 "Used to find matching left and right gloves and shoes."),
     PYTHON_METHOD(ptAvatar, wearClothingItem, "Params: clothing_name,update=1\nTells the avatar to wear a particular item of clothing.\n"
                 "And optionally hold update until later (for applying tinting before wearing)."),
+    PYTHON_METHOD(ptAvatar, wearRandomClothing, "Params: seed\nTells the Avatar to wear a random clothing outfit."),
     PYTHON_METHOD(ptAvatar, removeClothingItem, "Params: clothing_name,update=1\nTells the avatar to remove a particular item of clothing."),
     PYTHON_METHOD(ptAvatar, tintClothingItem, "Params: clothing_name,tint,update=1\nTells the avatar to tint(color) a particular item of clothing that they are already wearing.\n"
                 "'tint' is a ptColor object"),

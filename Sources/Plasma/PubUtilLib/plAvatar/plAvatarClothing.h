@@ -202,7 +202,7 @@ public:
     void WearDefaultClothing();
     void WearDefaultClothingType(uint32_t clothingType);
     void WearMaintainerOutfit();
-    void WearRandomOutfit();
+    void WearRandomOutfit(size_t seed);
     void RemoveMaintainerOutfit();
 
     bool ReadItems(hsStream* s, hsResMgr* mgr, bool broadcast = true);

@@ -218,6 +218,14 @@ public:
 
     /////////////////////////////////////////////////////////////////////////////
     //
+    //  Function   : WearRandomClothing
+    //
+    //  PURPOSE    : randomize clothing outfit
+    //
+    virtual void WearRandomClothing(size_t seed);
+
+    /////////////////////////////////////////////////////////////////////////////
+    //
     //  Function   : RemoveClothingItem
     //  PARAMETERS : 
     //
