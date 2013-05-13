@@ -16,5 +16,6 @@ if(3dsm_BUILD_PLUGIN)
     add_subdirectory(MaxMain)
     add_subdirectory(MaxPlasmaLights)
     add_subdirectory(MaxPlasmaMtls)
+    add_subdirectory(MaxImport)
     #add_subdirectory(MaxSceneViewer) # NOTE: Uses Plasma classes that do not exist
 endif()
